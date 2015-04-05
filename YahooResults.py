@@ -1,19 +1,9 @@
 from BeautifulSoup import BeautifulSoup
-from collections import namedtuple
+from supporting import struc
 import urllib, urllib2
 
 # Number of results you need to store from each search engine
 numresults = 30 
-
-class struc:
-    def __init__(self):
-        self.title = ''
-        self.description = ''
-
-def find_between(s, first, last):
-    start = s.index(first) + len(first)
-    end = s.index(last, start)
-    return s[start:end]
 
 def yahoo_scrape(query):
     yahooResults = []
@@ -40,22 +30,14 @@ def yahoo_scrape(query):
             
     size = len(titles)
     
-    filename = query + '_yahoo.txt'
+    filename = query + '_Yahoo.txt'
     file = open(filename,"w")
     for i in range(0,size):
+        result = struc()
         result.rank = i+1
         result.title = titles[i]
         result.description = descriptions[i]
         file.write(str(i+1) + '    ' + titles[i] + ' ' + descriptions[i] + '\n')
-    yahooResults.append(result)
+        yahooResults.append(result)
 
     return yahooResults
-    
-result = struc()
-yahooResults = yahoo_scrape('jaguar')
-'''
-for each in yahooResults:
-    print each.rank
-    print each.title
-    print each.description
-'''
