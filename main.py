@@ -14,4 +14,5 @@ yahooResults = yahoo_scrape(query)
 
 uniqueList = aggregate(googleResults,yahooResults)
 
-BestRankResults = bestRank(googleResults,yahooResults,uniqueList)
+bestRank(googleResults,yahooResults,uniqueList)
+bordaPositional(googleResults,yahooResults,uniqueList)
