@@ -22,66 +22,40 @@ def yahoo_scrape(query):
     urlfile = urllib2.urlopen(request)
     page = urlfile.read()
     soup = BeautifulSoup(page)
-    '''
-    s = soup.findAll('div','compTitle')
-    for i in s:
-        print i.prettify()
-    '''
-    title = []
-    description = []
+
+    titles = []
+    descriptions = []
 
     headers = soup.findAll('div','compTitle')
     for header in headers:
         if header is not None:
             t = header.a.text.encode('utf-8')
-            title.append(t)
+            titles.append(t)
     
     desclist = soup.findAll('div','compText aAbs')
     for desc in desclist:
         if desc is not None:
             d = desc.text.encode('utf-8')
-            description.append(d)
-
-    return yahooResults
+            descriptions.append(d)
+            
+    size = len(titles)
     
-'''
-    title = []
-    description = []
-
-    headers = soup.findAll('div','rc')
-    for header in headers:
-        t = header.a.string.encode('utf-8')
-        title.append(t)
-        
-    desclist = soup.findAll('span','st')
-    for desc in desclist:
-        isSubstring = '<span class="st">' in str(desc)
-        if isSubstring:
-            d = find_between(str(desc),'<span class="st">','</span>')
-        else:
-            d = find_between(str(desc),'<span class="_dwd st s std" style="','</span>')
-        description.append(d)
-        
-    urllist = soup.findAll()
-        
-    size = len(title)
-    
-    filename = query + '_google.txt'
+    filename = query + '_yahoo.txt'
     file = open(filename,"w")
     for i in range(0,size):
         result.rank = i+1
-        result.title = title
-        result.description = description
-        file.write(str(i+1) + '    ' + title[i] + ' ' + description[i] + '\n')
-    googleResults.append(result)
-'''
-''' 
-    for each in googleResults:
-        print each.rank
-        print each.title
-        print each.description
-'''
+        result.title = titles[i]
+        result.description = descriptions[i]
+        file.write(str(i+1) + '    ' + titles[i] + ' ' + descriptions[i] + '\n')
+    yahooResults.append(result)
 
+    return yahooResults
     
 result = struc()
-links = yahoo_scrape('jaguar')
+yahooResults = yahoo_scrape('jaguar')
+'''
+for each in yahooResults:
+    print each.rank
+    print each.title
+    print each.description
+'''
