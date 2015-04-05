@@ -1,5 +1,4 @@
 from BeautifulSoup import BeautifulSoup
-from collections import namedtuple
 import urllib, urllib2
 
 # Number of results you need to store from each search engine
@@ -34,8 +33,6 @@ def google_scrape(query):
     for desc in desclist:
         d = desc.text.encode('utf-8')
         description.append(d)
-        
-    urllist = soup.findAll()
         
     size = len(title)
     
