@@ -15,11 +15,14 @@ def yahoo_scrape(query):
 
     titles = []
     descriptions = []
+    urls = []
 
     headers = soup.findAll('div','compTitle')
     for header in headers:
         if header is not None:
             t = header.a.text.encode('utf-8')
+            u = header.a.get('href')
+            urls.append(u)
             titles.append(t)
     
     desclist = soup.findAll('div','compText aAbs')
@@ -37,6 +40,7 @@ def yahoo_scrape(query):
         result.rank = i+1
         result.title = titles[i]
         result.description = descriptions[i]
+        result.url = urls[i]
         file.write(str(i+1) + '    ' + titles[i] + ' ' + descriptions[i] + '\n')
         yahooResults.append(result)
 
