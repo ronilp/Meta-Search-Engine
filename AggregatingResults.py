@@ -15,7 +15,7 @@ def aggregate(googleResults,yahooResults):
     uniqueList = union(l1,l2)
 
     # Common Results
-    print(intersect(l1,l2))
+    #print(intersect(l1,l2))
     print str(len(l1)) + ' Google Results, ' + str(len(l2)) + ' Yahoo results, ' + str(len(uniqueList)) + ' Unique Results'
 
     googleURLs = []
