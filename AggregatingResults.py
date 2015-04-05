@@ -40,4 +40,4 @@ def aggregate(googleResults,yahooResults):
             count = count + 1
             i = yahooURLs.index(link)
             file.write(str(count) + '    ' + yahooResults[i].title + ' ' + yahooResults[i].description + '\n')
-    return
+    return uniqueList

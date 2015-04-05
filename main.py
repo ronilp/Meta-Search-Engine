@@ -12,6 +12,6 @@ query = raw_input('Enter Query : ')
 googleResults = google_scrape(query)
 yahooResults = yahoo_scrape(query)
 
-aggregate(googleResults,yahooResults)
+uniqueList = aggregate(googleResults,yahooResults)
 
-bestRank(googleResults,yahooResults)
+BestRankResults = bestRank(googleResults,yahooResults,uniqueList)
