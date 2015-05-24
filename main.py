@@ -28,12 +28,19 @@ print 'MAP for Best Rank Approach = ' + str(MAP1) + '\nMAP for Bordas Positional
 
 # Spearman Correlation
 # p = 1 - 6*sum((xi-yi)^2)/(n*(n*n-1))
-n = len(uniqueList)
-d = [-1,1,-3,1,1,1,0,2,-4,0,0,1,-4,2,5,12,-7,1,0,2,-4,0,0,1,-4,1,1,0,2,-3,0,0,1,-4,2,5,12,2,7,-2,-6,7,-8,1,-2,0,0,0,12,4,6,-1,-4,1,-3,1,1]
-d2 = 0
-for i in d:
-    d2 = d2 + i*i
+n = 30
+dg = [-1,11,-3,1,21,17,0,2,-4,20,10,1,-4,2,5,22,-7,1,9,24,-4,0,0,1,-4,15,18,0,2,-12]
+dg2 = 0
+for i in dg:
+    dg2 = dg2 + i*i
 
-p = 1 - 6*d2*1./(n*(n*n-1))
+dy = [1,-4,2,9,22,-7,-21,11,0,2,-14,20,10,11,9,24,-4,12,-2,1,-4,15,18,0,2,-12,11,-3,1,21]
+dy2 = 0
+for i in dy:
+    dy2 = dy2 + i*i
 
-print 'Spearman Correlation for Google and Yahoo = ' + str(p)
+p1 = 1 - 6*dg2*1./(n*(n*n-1))
+p2 = 1 - 6*dy2*1./(n*(n*n-1))
+
+print 'Spearman Correlation for Best Rank Approach = ' + str(p1)
+print 'Spearman Correlation for Bordas Positional Approach = ' + str(p2)
